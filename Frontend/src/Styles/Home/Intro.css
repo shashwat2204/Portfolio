@@ -1,0 +1,125 @@
+* {
+  padding: 0;
+  margin: 0;
+  border: 0;
+  box-sizing: border-box;
+}
+
+.page-bg {
+  font-family: Arial, Helvetica, sans-serif;
+  height: 100vh;
+  width: 100%;
+  background-color: black;
+  color: blanchedalmond;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.page-overlay {
+  height: 30vh;
+  width: 70vw;
+  display: grid;
+  justify-content: center;
+  align-items: center;
+}
+
+.main-head {
+  height: 10vh;
+  width: 65vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 80px;
+  gap: 5px;
+}
+
+.Fi-name span {
+  animation: Drop-down 1.5s ease forwards, Fade-out 6s ease forwards;
+  opacity: 0;
+  display: inline-block;
+}
+.Fi-name span:nth-child(n) {
+  animation-delay: calc(0.2s * var(--i));
+}
+.Fi-name span:nth-child(1) {
+  --i: 1;
+}
+.Fi-name span:nth-child(2) {
+  --i: 2;
+}
+.Fi-name span:nth-child(3) {
+  --i: 3;
+}
+.Fi-name span:nth-child(4) {
+  --i: 4;
+}
+.Fi-name span:nth-child(5) {
+  --i: 5;
+}
+.Fi-name span:nth-child(6) {
+  --i: 6;
+}
+.Fi-name span:nth-child(7) {
+  --i: 7;
+}
+.Fi-name span:nth-child(8) {
+  --i: 8;
+}
+
+.La-name span {
+  animation: Drop-down 1.5s ease forwards, Fade-out 6s ease forwards;
+  opacity: 0;
+  display: inline-block;
+}
+.La-name span:nth-child(n) {
+  animation-delay: calc(0.2s * var(--i));
+}
+.La-name span:nth-child(1) {
+  --i: 1;
+}
+.La-name span:nth-child(2) {
+  --i: 2;
+}
+.La-name span:nth-child(3) {
+  --i: 3;
+}
+.La-name span:nth-child(4) {
+  --i: 4;
+}
+.La-name span:nth-child(5) {
+  --i: 5;
+}
+.La-name span:nth-child(6) {
+  --i: 6;
+}
+
+@keyframes Drop-down {
+  from {
+    opacity: 0;
+    transform: translateY(-80px);
+    
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0px);
+    
+  }
+}
+
+@keyframes Fade-out {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+}
+
+/* Add hover effect */
+.Fi-name span:hover {
+  color: rgb(18, 103, 163);
+  transform: scale(1.2);
+  transition: transform 0.2s ease, color 0.2s ease;
+}

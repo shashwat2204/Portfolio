@@ -1,0 +1,41 @@
+.aboutMe {
+    position: relative;
+    height: auto; /* Auto height for flexible content */
+    background: linear-gradient(135deg, #00050b, #020916, #08131f, #0d131b);
+    padding: 5%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+  }
+  
+  .aboutMe-box {
+    max-width: 800px; /* Constrain the content width */
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.05); /* Subtle translucent box */
+    padding: 20px;
+    border-radius: 12px; /* Rounded corners */
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.5); /* Subtle shadow */
+  }
+  
+  .aboutMe-box span {
+    font-size: clamp(16px, 2vw, 20px); /* Responsive text */
+    line-height: 1.6; /* Improve readability */
+    color: rgba(255, 255, 255, 0.9); /* Softer text color */
+  }
+
+  .aboutMe-box {
+    animation: slideUp 1.5s ease-out;
+  } 
+
+  @keyframes slideUp {
+    from {
+      transform: translateY(50px);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+  
