@@ -3,6 +3,7 @@ import LandingPage from "../Pages/Home/LandingPage";
 import Home from "../Pages/Home/Home";
 import Contact from "../Pages/Authentication/Contact";
 import AboutMe from "../Pages/About/AboutMe";
+import Skills from "../Pages/Skills/Skills";
 const PageRoutes = createBrowserRouter([
   {
     path: "/",
@@ -21,6 +22,7 @@ const PageRoutes = createBrowserRouter([
       },
       {
         path: "/skills",
+        element: <Skills />
       },
       {
         path: "/contact",

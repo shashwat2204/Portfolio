@@ -6,7 +6,7 @@
 
 
 .home-bg {
-  background-image: url("public/portflio.jpg");
+  background-image: url("/freepik__expand__83543.png");
   background-size: cover;
   background-position: center;
   top: 10vh;
@@ -19,13 +19,18 @@
   position: absolute;
 }
 
+.overlay{
+  height: 90vh;
+  background-color: rgba(0, 0, 0, 0.466);
+}
+
 .welcome {
   font-family: Arial, sans-serif;
   width: 100vw;
   display: flex;
   flex-direction: column; 
   justify-content: middle;
-  align-items: end;
+  align-items: start;
   padding: 5%; 
   text-align: center; 
   height: 80vh;
@@ -33,7 +38,7 @@
 }
 
 .welcome div h1 {
-  font-size: clamp(48px, 8vw, 92px); /* Responsive scaling */
+  font-size: clamp(40px, 7vw, 80px); /* Responsive scaling */
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6); /* Add shadow for better contrast */
   transition: color 0.3s ease; /* Smooth hover effect */
 }
@@ -43,7 +48,7 @@
 }
 
 .welcome div h4 {
-  font-size: 22px;
+  font-size: 20px;
   margin-top: 10px; /* Add spacing between elements */
   color: rgba(255, 255, 255, 0.8); /* Softer color for subtitle */
 }
