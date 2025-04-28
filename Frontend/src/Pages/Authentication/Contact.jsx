@@ -3,6 +3,7 @@ import { toast } from "react-hot-toast";
 import * as Yup from "yup";
 import axios from "axios";
 import "../../Styles/About/Contact.css";
+import Navbar from "../../Components/Navbar";
 
 const Contact = () => {
   const initialValues = {
@@ -21,7 +22,10 @@ const Contact = () => {
 
   const sendEmail = async (values, { resetForm }) => {
     try {
-      await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/contact`, values);
+      await axios.post(
+        `${import.meta.env.VITE_BACKEND_URL}/api/contact`,
+        values
+      );
       toast.success("Message sent successfully!");
       resetForm();
     } catch (error) {
@@ -31,41 +35,60 @@ const Contact = () => {
   };
 
   return (
-    <div className="contact-container">
-      <div className="contact-box">
-        <h2 className="contact-title">Contact Me</h2>
+    <>
+    <Navbar />
+      <div className="contact-container">
+        <div className="contact-box">
+          <h2 className="contact-title">Contact Me</h2>
 
-        <Formik
-          initialValues={initialValues}
-          validationSchema={validationSchema}
-          onSubmit={sendEmail}
-        >
-          {({ isSubmitting }) => (
-            <Form className="contact-form">
-              <label htmlFor="name">Your Name</label>
-              <Field type="text" name="name" className="contact-input" />
-              <ErrorMessage name="name" component="div" className="contact-error" />
+          <Formik
+            initialValues={initialValues}
+            validationSchema={validationSchema}
+            onSubmit={sendEmail}
+          >
+            {({ isSubmitting }) => (
+              <Form className="contact-form">
+                <label htmlFor="name">Your Name</label>
+                <Field type="text" name="name" className="contact-input" />
+                <ErrorMessage
+                  name="name"
+                  component="div"
+                  className="contact-error"
+                />
 
-              <label htmlFor="email">Your Email</label>
-              <Field type="email" name="email" className="contact-input" />
-              <ErrorMessage name="email" component="div" className="contact-error" />
+                <label htmlFor="email">Your Email</label>
+                <Field type="email" name="email" className="contact-input" />
+                <ErrorMessage
+                  name="email"
+                  component="div"
+                  className="contact-error"
+                />
 
-              <label htmlFor="message">Your Message</label>
-              <Field as="textarea" name="message" className="contact-textarea" />
-              <ErrorMessage name="message" component="div" className="contact-error" />
+                <label htmlFor="message">Your Message</label>
+                <Field
+                  as="textarea"
+                  name="message"
+                  className="contact-textarea"
+                />
+                <ErrorMessage
+                  name="message"
+                  component="div"
+                  className="contact-error"
+                />
 
-              <button
-                type="submit"
-                disabled={isSubmitting}
-                className="contact-button"
-              >
-                {isSubmitting ? "Sending..." : "Send Message"}
-              </button>
-            </Form>
-          )}
-        </Formik>
+                <button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="contact-button"
+                >
+                  {isSubmitting ? "Sending..." : "Send Message"}
+                </button>
+              </Form>
+            )}
+          </Formik>
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 
