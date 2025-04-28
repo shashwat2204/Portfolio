@@ -13,10 +13,10 @@
   .aboutMe-box {
     max-width: 800px; /* Constrain the content width */
     width: 100%;
-    background-color: rgba(37, 36, 36, 0.591); /* Subtle translucent box */
+    background-color: rgba(72, 2, 68, 0.991); /* Subtle translucent box */
     padding: 20px;
     border-radius: 12px; /* Rounded corners */
-    box-shadow: 0 0 8px #bc1eff, 0 0 16px #e91eff, 0 0 24px #ce1eff; /* Subtle shadow */
+    box-shadow: 0 0 8px #d068fd, 0 0 16px #f06bff, 0 0 24px #ce1eff; /* Subtle shadow */
   }
   
   .aboutMe-box span {
