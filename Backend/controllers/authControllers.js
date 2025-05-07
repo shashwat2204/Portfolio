@@ -1,18 +1,16 @@
-// import Auth from "../models/Auth.js";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
-import Auth from "../models/auth";
+import Auth from "../models/auth.js";
 
 
 //SINGUP
 export const signup = async(req ,res) =>{
-    const { email, password} = res.body;
+    const { email, password} = req.body;
 
     try{
         const existingUser = await Auth.findOne({email});
         if (existingUser){
-            response= res.status(400).json({message: "User already exist !! :)"});
-            return response;
+            return res.status(400).json({message: "User already exist !! :)"});
         }
 
         const salt = await bcrypt.genSalt(10);
@@ -32,16 +30,16 @@ export const signup = async(req ,res) =>{
 //LOGIN
 
 export const login = async (req, res) =>{
-    const {email, password} = res.body
+    const {email, password} = req.body
 
     try{
         const user = await Auth.findOne({email})
         if(!user){
-            response = res.status(404).json({message: "User not found"})
+            return res.status(404).json({message: "User not found"})
         }
 
-        const password = await bcrypt.compare(password, user.password);
-        if(!password){
+        const isMatch = await bcrypt.compare(password, user.password);
+        if(!isMatch){
             return res.status(400).json({message: "Incorrect Password"})
         }
 
@@ -50,6 +48,14 @@ export const login = async (req, res) =>{
             process.env.JWT_SECRET,
             { expiresIn: "1h" }
           );
+          res.status(200).json({
+            message: "Login successful!",
+            token,
+            user: { id: user._id, email: user.email },
+          });
     }
-    
-}
+    catch(error){
+        console.error("Login Error:", error);
+        res.status(500).json({ message: "Server Error" });
+    }
+};   
