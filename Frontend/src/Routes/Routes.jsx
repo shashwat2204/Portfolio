@@ -4,6 +4,8 @@ import Home from "../Pages/Home/Home";
 import Contact from "../Pages/Authentication/Contact";
 import AboutMe from "../Pages/About/AboutMe";
 import Skills from "../Pages/Skills/Skills";
+import Login from "../Pages/Authentication/Login";
+import Signup from "../Pages/Authentication/Signup";
 const PageRoutes = createBrowserRouter([
   {
     path: "/",
@@ -27,6 +29,19 @@ const PageRoutes = createBrowserRouter([
       {
         path: "/contact",
         element: <Contact />,
+      },
+      {
+        path: "/signup",
+        element: <Signup />,
+      },
+      {
+        path: "/auth",
+        children: [
+          {
+            path: "login",
+            element: <Login />,
+          },
+        ],
       },
     ],
   },
