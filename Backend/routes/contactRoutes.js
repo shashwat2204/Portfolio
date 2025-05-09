@@ -1,8 +1,8 @@
 import express from "express";
 import { contactForm } from "../controllers/contactController.js";
 
-const Contactrouter = express.Router();
+const contactRoutes = express.Router();
 
-Contactrouter.post("/contact", contactForm);
+contactRoutes.post("/", contactForm);
 
-export default Contactrouter;
+export default contactRoutes;
