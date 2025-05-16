@@ -5,7 +5,8 @@ import { useState } from "react";
 import "../../Styles/Authentication/Login.css";
 import { useNavigate } from "react-router-dom";
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
-import {Link} from 'react-router-dom'
+import { Link } from "react-router-dom";
+import { Button } from "@mui/material";
 
 const Login = () => {
   const [msg, setMsg] = useState("");
@@ -39,7 +40,7 @@ const Login = () => {
       console.log("User:", user);
 
       setTimeout(() => {
-        navigate("/");
+        navigate("/intro");
       }, 900);
     } catch (err) {
       setMsg(err.response?.data?.message || "Login failed");
@@ -68,22 +69,31 @@ const Login = () => {
               <label>Password</label>
               <div className="password-field">
                 <Field
+                  className="password-input"
                   type={showPassword ? "text" : "password"}
                   name="password"
                 />
-                <span
+                <Button
+                  type="button"
                   className="toggle-password"
-                  onClick={() => setShowPassword((prev) => !prev)}
+                  variant="outlined"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    setShowPassword((prev) => !prev);
+                  }}
                 >
-                  {showPassword ? <FaRegEye />: <FaRegEyeSlash /> }
-                </span>
+                  {showPassword ? <FaRegEye /> : <FaRegEyeSlash />}
+                </Button>
               </div>
               <ErrorMessage name="password" component="div" className="error" />
 
               <button type="submit" disabled={isSubmitting}>
                 {isSubmitting ? "Logging in..." : "Login"}
               </button>
-              <Link to="/signup" className="link"> Dont have an account? click here</Link>
+              <Link to="/signup" className="link">
+                {" "}
+                Dont have an account? click here
+              </Link>
             </Form>
           )}
         </Formik>
