@@ -12,7 +12,11 @@ const PageRoutes = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <LandingPage />,
+        element: <Login />,
+      },
+      {
+        path: "/intro",
+        element: <LandingPage />, 
       },
       {
         path: "/home",
@@ -33,15 +37,6 @@ const PageRoutes = createBrowserRouter([
       {
         path: "/signup",
         element: <Signup />,
-      },
-      {
-        path: "/auth",
-        children: [
-          {
-            path: "login",
-            element: <Login />,
-          },
-        ],
       },
     ],
   },

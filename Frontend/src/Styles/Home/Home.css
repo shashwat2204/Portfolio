@@ -74,6 +74,10 @@
   align-items: center;
 }
 
+/* .downarrow span{
+  margin-right: 10px;
+  } */
+  
 .downarrow-icon {
   font-size: 48px;
   color: rgb(110, 100, 100);
@@ -86,6 +90,37 @@
 
 .downarrow-icon {
   animation: pulse 1.5s infinite ease-in-out; /* Add a pulsing animation */
+}
+
+.tooltip-container {
+  position: relative;
+  display: inline-block;
+}
+
+.tooltip-text {
+  visibility: hidden;
+  width: max-content;
+  background-color: rgba(30, 144, 255, 0.9); /* DeepSkyBlue with opacity */
+  color: white;
+  text-align: center;
+  border-radius: 6px;
+  padding: 6px 10px;
+  position: absolute;
+  z-index: 1;
+  bottom: 110%; /* Position above the icon */
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  font-size: 14px;
+  white-space: nowrap;
+  pointer-events: none;
+  animation: pulse 1.5s infinite ease-in-out;
+}
+
+.tooltip-container:hover .tooltip-text {
+  visibility: visible;
+  opacity: 1;
 }
 
 @keyframes pulse {

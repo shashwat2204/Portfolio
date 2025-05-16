@@ -4,6 +4,8 @@ import * as Yup from "yup";
 import axios from "axios";
 import "../../Styles/Authentication/Login.css"
 import { useNavigate } from "react-router-dom";
+import { Button } from "@mui/material";
+import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
 
 
 const Signup = () => {
@@ -63,13 +65,17 @@ const Signup = () => {
                   type={showPassword ? "text" : "password"}
                   name="password"
                 />
-                <button
+               <Button
                   type="button"
-                  onClick={() => setShowPassword(!showPassword)}
-                  className="toggle-btn"
+                  className="toggle-password"
+                  variant="outlined"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    setShowPassword((prev) => !prev);
+                  }}
                 >
-                  {showPassword ? "Hide" : "Show"}
-                </button>
+                  {showPassword ? <FaRegEye /> : <FaRegEyeSlash />}
+                </Button>
               </div>
               <ErrorMessage name="password" component="div" className="error" />
 

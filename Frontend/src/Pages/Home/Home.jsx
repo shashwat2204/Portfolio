@@ -21,7 +21,8 @@ const Home = () => {
               </div>
             </div>
             <div className="downarrow">
-              <Link to="/about">
+              <Link to="/about" className="tooltip-container">
+                <span className="tooltip-text">About Me</span>
                 <BiSolidChevronDownCircle className="downarrow-icon" />
               </Link>
             </div>
