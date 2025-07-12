@@ -2,8 +2,8 @@ import { useState } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
-import "../../Styles/Authentication/Login.css"
-import { useNavigate } from "react-router-dom";
+import "../../Styles/Authentication/Login.css";
+import { Link, useNavigate } from "react-router-dom";
 import { Button } from "@mui/material";
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
 
@@ -28,14 +28,16 @@ const Signup = () => {
   const handleSubmit = async (values, { setSubmitting, resetForm }) => {
     setMsg("");
     try {
-      const res = await axios.post("http://localhost:5000/api/auth/signup", values);
+      const res = await axios.post(
+        "http://localhost:5000/api/auth/signup",
+        values
+      );
       setMsg(res.data.message || "Signup successful!");
       resetForm();
 
       setTimeout(() => {
-        navigate("/auth/login");
+        navigate("/");
       }, 1500);
-
     } catch (err) {
       setMsg(err.response?.data?.message || "Signup failed");
     }
@@ -65,7 +67,7 @@ const Signup = () => {
                   type={showPassword ? "text" : "password"}
                   name="password"
                 />
-               <Button
+                <Button
                   type="button"
                   className="toggle-password"
                   variant="outlined"
@@ -82,6 +84,10 @@ const Signup = () => {
               <button type="submit" disabled={isSubmitting}>
                 {isSubmitting ? "Signing up..." : "Signup"}
               </button>
+              <Link to="/" className="link">
+                {" "}
+                already have an account? click here
+              </Link>
             </Form>
           )}
         </Formik>
