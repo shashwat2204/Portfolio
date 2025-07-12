@@ -48,6 +48,12 @@ export const login = async (req, res) =>{
             process.env.JWT_SECRET,
             { expiresIn: "1h" }
           );
+          res.cookie("token", token, {
+            httpOnly: true,
+            secure: process.env.NODE_ENV === "production",
+            sameSite: "Strict",
+            maxAge: 3600000,
+          });
           res.status(200).json({
             message: "Login successful!",
             token,
@@ -55,7 +61,7 @@ export const login = async (req, res) =>{
           });
     }
     catch(error){
-        console.error("Login Error:", error);
+        console.error("Invalid Username or Password:", error);
         res.status(500).json({ message: "Server Error" });
     }
 };   
