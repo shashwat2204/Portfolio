@@ -3,21 +3,27 @@ import Navbar from "../../Components/Navbar";
 import {
   FaReact,
   FaNodeJs,
-  FaHtml5,
   FaJs,
   FaDatabase,
   FaCode,
+  FaPython,
+  FaJava,
 } from "react-icons/fa";
 import "../../Styles/Skills/Skills.css";
 
 const skills = [
-  { name: "HTML & CSS", icon: <FaHtml5 /> },
+  { name: "C / C++", icon: <FaCode /> },
   { name: "JavaScript", icon: <FaJs /> },
+  { name: "TypeScript", icon: <FaCode /> },
+  { name: "Python", icon: <FaPython /> },
+  { name: "C# / .NET", icon: <FaCode /> },
+  { name: "Java", icon: <FaJava /> },
   { name: "React", icon: <FaReact /> },
   { name: "Node.js", icon: <FaNodeJs /> },
   { name: "Express.js", icon: <FaCode /> },
   { name: "MongoDB", icon: <FaDatabase /> },
-  { name: "TypeScript", icon: <FaCode /> },
+  { name: "SQL / PostgreSQL", icon: <FaDatabase /> },
+  { name: "RAG & LLMs", icon: <FaCode /> },
 ];
 
 const Skills = () => {

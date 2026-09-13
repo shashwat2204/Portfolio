@@ -4,6 +4,7 @@ import * as Yup from "yup";
 import axios from "axios";
 import "../../Styles/About/Contact.css";
 import Navbar from "../../Components/Navbar";
+import { motion } from "framer-motion";
 
 const Contact = () => {
   const initialValues = {
@@ -23,8 +24,8 @@ const Contact = () => {
   const sendEmail = async (values, { resetForm }) => {
     try {
       await axios.post(
-        `${import.meta.env.VITE_BACKEND_URL}/api/contact`,
-        values
+        `${import.meta.env.VITE_BACKEND_URL || "http://localhost:5000"}/api/contact`,
+        values,
       );
       toast.success("Message sent successfully!");
       resetForm();
@@ -36,9 +37,16 @@ const Contact = () => {
 
   return (
     <>
-    <Navbar />
+      <Navbar />
       <div className="contact-container">
-        <div className="contact-box">
+        <div className="contact-glow" />
+        <motion.div
+          className="contact-box"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+        >
+          <p className="contact-kicker">LET’S CONNECT</p>
           <h2 className="contact-title">Contact Me</h2>
 
           <Formik
@@ -86,7 +94,7 @@ const Contact = () => {
               </Form>
             )}
           </Formik>
-        </div>
+        </motion.div>
       </div>
     </>
   );

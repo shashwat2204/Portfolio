@@ -1,50 +1,56 @@
+import { motion } from "framer-motion";
 import Navbar from "../../Components/Navbar";
 import "../../Styles/About/AboutMe.css";
 
-const AboutMe = () => {
-  return (
-    <>
-      <Navbar />
-      <div className="aboutMe">
-        <div className="aboutMe-box">
-          <span>
-            <p>👋 Hi, I’m Shashwat Sharma,</p>
-            <p>
-              a passionate third-year Computer Science student at Amity
-              University, Noida with a deep interest in AI/ML and Full-Stack
-              Development. I specialize in C++, JavaScript (MERN stack), and
-              Python (Machine Learning) and enjoy building scalable and
-              efficient applications.
-            </p>
-
-            <p>
-              Currently, I work part-time as a Web Developer at a startup, where
-              I contribute to real-world projects, enhancing my technical and
-              problem-solving skills. I actively participate in hackathons like
-              Smart India Hackathon, Sparkathon, Cybercup 3.0 & 4.0, Imagine
-              Cup, CSS Flair, Spooktober Fest, and Hackfest, gaining hands-on
-              experience in competitive coding and teamwork. Additionally, I
-              challenge myself in coding competitions on HackerRank and
-              GeeksforGeeks to refine my skills.
-            </p>
-
-            <p>
-              With aspirations of becoming a Software Engineer or working in
-              AI/ML, I am always eager to learn and explore new technologies.
-              Beyond coding, I love playing badminton and singing, which keeps
-              me motivated and balanced.
-            </p>
-
-            <p>
-              🚀 I’m always open to collaborations and exciting tech
-              discussions. Feel free to explore my work and connect with me
-              through the contact page!
-            </p>
-          </span>
+const AboutMe = () => (
+  <>
+    <Navbar />
+    <main className="aboutMe">
+      <motion.div
+        className="aboutMe-box"
+        initial={{ opacity: 0, y: 24 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.55 }}
+      >
+        <div className="section-kicker">01 / ABOUT ME</div>
+        <h1>Building intelligent, reliable software.</h1>
+        <div className="about-copy">
+          <p>
+            Hi, I’m Shashwat Sharma, a Computer Science and Engineering graduate
+            specialising in AI/ML from Amity University, Noida.
+          </p>
+          <p>
+            I build full-stack applications and AI-powered systems with C#,
+            ASP.NET Core, React, Node.js, Python, SQL, and modern AI
+            technologies. I enjoy turning ideas into practical products - from
+            backend APIs and business applications to RAG systems, LLM-powered
+            tools, and intelligent workflows.
+          </p>
+          <p>
+            I’ve gained hands-on software engineering experience at Cognizant,
+            working with the .NET ecosystem, REST APIs, databases, and
+            full-stack application development. I also have startup experience
+            from The Sirius Academy, where I worked on lessons, user profiles,
+            and reusable product components.
+          </p>
+          <p>
+            I’m particularly interested in the intersection of software
+            engineering and AI - building systems that are intelligent,
+            reliable, and useful in the real world. I’m currently expanding my
+            skills in cloud deployment, Docker, CI/CD, and production
+            engineering to take the things I build from development to
+            production.
+          </p>
         </div>
-      </div>
-    </>
-  );
-};
-
+        <div className="about-tags">
+          <span>FULL STACK</span>
+          <span>GENERATIVE AI</span>
+          <span>RAG SYSTEMS</span>
+          <span>ASP.NET / C#</span>
+          <span>CLOUD & CI/CD</span>
+        </div>
+      </motion.div>
+    </main>
+  </>
+);
 export default AboutMe;

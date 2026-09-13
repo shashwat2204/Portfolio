@@ -4,9 +4,8 @@ import * as Yup from "yup";
 import axios from "axios";
 import "../../Styles/Authentication/Login.css";
 import { Link, useNavigate } from "react-router-dom";
-import { Button } from "@mui/material";
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
-
+import { motion } from "framer-motion";
 
 const Signup = () => {
   const [msg, setMsg] = useState("");
@@ -29,8 +28,8 @@ const Signup = () => {
     setMsg("");
     try {
       const res = await axios.post(
-        "http://localhost:5000/api/auth/signup",
-        values
+        `${import.meta.env.VITE_BACKEND_URL || "http://localhost:5000"}/api/auth/signup`,
+        values,
       );
       setMsg(res.data.message || "Signup successful!");
       resetForm();
@@ -46,8 +45,12 @@ const Signup = () => {
 
   return (
     <div className="login-container">
-      <div className="login-form">
+      <div className="auth-orb auth-orb-one" />
+      <div className="auth-orb auth-orb-two" />
+      <motion.div className="login-form" initial={{ opacity: 0, y: 25, rotateX: -8 }} animate={{ opacity: 1, y: 0, rotateX: 0 }} transition={{ duration: 0.55, ease: "easeOut" }}>
+        <p className="auth-kicker">START YOUR JOURNEY</p>
         <h2>Signup</h2>
+        <p className="auth-subtitle">Create an account and explore my work.</p>
         {msg && <p className="message">{msg}</p>}
 
         <Formik
@@ -67,17 +70,16 @@ const Signup = () => {
                   type={showPassword ? "text" : "password"}
                   name="password"
                 />
-                <Button
+                <button
                   type="button"
                   className="toggle-password"
-                  variant="outlined"
                   onClick={(e) => {
                     e.preventDefault();
                     setShowPassword((prev) => !prev);
                   }}
                 >
                   {showPassword ? <FaRegEye /> : <FaRegEyeSlash />}
-                </Button>
+                </button>
               </div>
               <ErrorMessage name="password" component="div" className="error" />
 
@@ -85,13 +87,12 @@ const Signup = () => {
                 {isSubmitting ? "Signing up..." : "Signup"}
               </button>
               <Link to="/" className="link">
-                {" "}
-                already have an account? click here
+                Already have an account? Log in
               </Link>
             </Form>
           )}
         </Formik>
-      </div>
+      </motion.div>
     </div>
   );
 };

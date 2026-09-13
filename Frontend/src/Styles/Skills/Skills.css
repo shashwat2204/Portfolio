@@ -1,91 +1,84 @@
-
 .container {
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 2rem;
-  background-color: #1e1e2f; 
+  min-height: calc(100vh - 76px);
+  display: grid;
+  place-items: center;
+  padding: 60px 24px;
+  background:
+    radial-gradient(
+      circle at 85% 20%,
+      rgba(89, 81, 229, 0.22),
+      transparent 28rem
+    ),
+    #080b14;
 }
-
-/* Skills section */
 .skills-page {
-  width: 100vw;
-  max-width: 900px;
-  background: linear-gradient(135deg, #003c53, rgb(48, 0, 88), #370049);
-  padding: 2rem;
-  border-radius: 12px;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
-  text-align: center;
+  width: min(100%, 980px);
 }
-
-/* Title styling */
 .skills-title {
-  text-shadow:0 0 4px #d068fd, 0 0 8px #f06bff, 0 0 16px #ce1eff;
-  font-size: 2.5rem;
-  font-weight: bold;
-  margin-bottom: 1.5rem;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  color: white;
-  position: relative;
+  font-size: clamp(2.6rem, 6vw, 5.2rem);
+  letter-spacing: -0.07em;
+  margin: 0 0 38px;
+  color: #f4f6ff;
 }
-
-/* Underline effect */
 .skills-title::after {
-  content: '';
-  width: 80px;
-  height: 4px;
-  background: #ffffff;
+  content: "A focused toolkit for shipping useful products.";
   display: block;
-  margin: 10px auto 0;
-  border-radius: 2px;
-  box-shadow: 0 0 4px #d068fd, 0 0 8px #f06bff, 0 0 16px #ce1eff;
+  margin-top: 12px;
+  font:
+    400 0.95rem/1.6 "Manrope",
+    sans-serif;
+  letter-spacing: 0;
+  color: #9da6bd;
 }
-
-/* Grid layout for skills */
 .skills-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-  gap: 1rem;
-  padding: 1rem;
-  justify-content: center;
+  grid-template-columns: repeat(auto-fit, minmax(165px, 1fr));
+  gap: 14px;
+  padding: 0;
 }
-
-/* Individual skill items */
 .skill-item {
-  background: rgba(255, 255, 255, 0.1);
-  padding: 15px;
-  border-radius: 10px;
+  min-height: 150px;
+  padding: 22px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  align-items: flex-start;
+  justify-content: flex-end;
   flex-direction: column;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  transition: transform 0.3s ease, background 0.3s ease;
-  cursor: pointer;
-  color: aliceblue;
+  background: rgba(25, 29, 46, 0.65);
+  color: #f7f8ff;
+  transition:
+    border-color 0.25s,
+    background 0.25s,
+    transform 0.25s;
 }
-
-/* Hover effect */
 .skill-item:hover {
-  background: rgba(255, 255, 255, 0.2);
+  background: rgba(44, 47, 79, 0.75);
+  border-color: rgba(184, 255, 104, 0.55);
   transform: translateY(-5px);
-  box-shadow: 0 0 8px #ffffff, 0 0 16px #f06bff, 0 0 24px #ce1eff;
 }
-
-/* Skill icon */
 .skill-icon {
-  color: #4ce9fe;
-  font-size: 1.8rem;
-  margin-bottom: 8px;
+  color: #b8ff68;
+  font-size: 2.1rem;
+  margin-bottom: 14px;
 }
-
-/* Skill text */
 .skill-text {
-  font-size: 1.1rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  color: white;
+  font-size: 0.92rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+.skills-grid .skill-item:nth-child(2n) .skill-icon {
+  color: #a9adff;
+}
+@media (max-width: 600px) {
+  .container {
+    padding: 48px 20px;
+  }
+  .skills-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .skill-item {
+    min-height: 130px;
+    padding: 17px;
+  }
 }
