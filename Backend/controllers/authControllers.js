@@ -5,7 +5,12 @@ import Auth from "../models/auth.js";
 
 //SINGUP
 export const signup = async(req ,res) =>{
-    const { email, password} = req.body;
+    const email = req.body.email?.trim().toLowerCase();
+    const { password } = req.body;
+
+    if (!email || !/^\S+@\S+\.\S+$/.test(email) || typeof password !== "string" || password.length < 6) {
+      return res.status(400).json({ message: "Please provide a valid email and password." });
+    }
 
     try{
         const existingUser = await Auth.findOne({email});
@@ -18,7 +23,6 @@ export const signup = async(req ,res) =>{
 
         const newUser = new Auth({ email, password: hashedPassword });
         await newUser.save();
-        console.log({email, password: hashedPassword})
         res.status(201).json({ message: "Signup successful!" });
     }
     catch (error) {
@@ -30,17 +34,22 @@ export const signup = async(req ,res) =>{
 //LOGIN
 
 export const login = async (req, res) =>{
-    const {email, password} = req.body
+    const email = req.body.email?.trim().toLowerCase();
+    const { password } = req.body;
+
+    if (!email || typeof password !== "string") {
+      return res.status(400).json({ message: "Please provide an email and password." });
+    }
 
     try{
         const user = await Auth.findOne({email})
         if(!user){
-            return res.status(404).json({message: "User not found"})
+            return res.status(401).json({message: "Invalid email or password"})
         }
 
         const isMatch = await bcrypt.compare(password, user.password);
         if(!isMatch){
-            return res.status(400).json({message: "Incorrect Password"})
+            return res.status(401).json({message: "Invalid email or password"})
         }
 
         const token = jwt.sign(
@@ -48,12 +57,6 @@ export const login = async (req, res) =>{
             process.env.JWT_SECRET,
             { expiresIn: "1h" }
           );
-          res.cookie("token", token, {
-            httpOnly: true,
-            secure: process.env.NODE_ENV === "production",
-            sameSite: "Strict",
-            maxAge: 3600000,
-          });
           res.status(200).json({
             message: "Login successful!",
             token,

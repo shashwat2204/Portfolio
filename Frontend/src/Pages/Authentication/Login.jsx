@@ -6,7 +6,7 @@ import "../../Styles/Authentication/Login.css";
 import { useNavigate } from "react-router-dom";
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
 import { Link } from "react-router-dom";
-import { Button } from "@mui/material";
+import { motion } from "framer-motion";
 
 const Login = () => {
   const [msg, setMsg] = useState("");
@@ -30,8 +30,8 @@ const Login = () => {
 
     try {
       const res = await axios.post(
-        "http://localhost:5000/api/auth/login",
-        values
+        `${import.meta.env.VITE_BACKEND_URL || "http://localhost:5000"}/api/auth/login`,
+        values,
       );
 
       const { token, user } = res.data;
@@ -51,8 +51,12 @@ const Login = () => {
 
   return (
     <div className="login-container">
-      <div className="login-form">
+      <div className="auth-orb auth-orb-one" />
+      <div className="auth-orb auth-orb-two" />
+      <motion.div className="login-form" initial={{ opacity: 0, y: 25, rotateX: -8 }} animate={{ opacity: 1, y: 0, rotateX: 0 }} transition={{ duration: 0.55, ease: "easeOut" }}>
+        <p className="auth-kicker">WELCOME BACK</p>
         <h2>Login</h2>
+        <p className="auth-subtitle">Continue building what matters.</p>
         {msg && <p className="message">{msg}</p>}
 
         <Formik
@@ -73,17 +77,16 @@ const Login = () => {
                   type={showPassword ? "text" : "password"}
                   name="password"
                 />
-                <Button
+                <button
                   type="button"
                   className="toggle-password"
-                  variant="outlined"
                   onClick={(e) => {
                     e.preventDefault();
                     setShowPassword((prev) => !prev);
                   }}
                 >
                   {showPassword ? <FaRegEye /> : <FaRegEyeSlash />}
-                </Button>
+                </button>
               </div>
               <ErrorMessage name="password" component="div" className="error" />
 
@@ -91,13 +94,12 @@ const Login = () => {
                 {isSubmitting ? "Logging in..." : "Login"}
               </button>
               <Link to="/signup" className="link">
-                {" "}
-                Dont have an account? click here
+                Don’t have an account? Create one
               </Link>
             </Form>
           )}
         </Formik>
-      </div>
+      </motion.div>
     </div>
   );
 };

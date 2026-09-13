@@ -7,6 +7,8 @@ import Skills from "../Pages/Skills/Skills";
 import Login from "../Pages/Authentication/Login";
 import Signup from "../Pages/Authentication/Signup";
 import ProtectedRoute from "../Utils/ProtectedRoute";
+import Projects from "../Pages/Projects/Projects";
+import Blog from "../Pages/Blog/Blog";
 
 const PageRoutes = createBrowserRouter([
   {
@@ -40,6 +42,14 @@ const PageRoutes = createBrowserRouter([
           {
             path: "/skills",
             element: <Skills />,
+          },
+          {
+            path: "/projects",
+            element: <Projects />,
+          },
+          {
+            path: "/blog",
+            element: <Blog />,
           },
           {
             path: "/contact",

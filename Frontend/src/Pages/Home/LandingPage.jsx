@@ -3,22 +3,17 @@ import Intro from "./Intro";
 import Home from "./Home";
 
 const LandingPage = () => {
-  const [showIntro, setShowIntro] = useState(true); 
+  const [showIntro, setShowIntro] = useState(true);
 
   useEffect(() => {
-   
     const timer = setTimeout(() => {
       setShowIntro(false);
-    }, 6000); 
+    }, 2600);
 
-    return () => clearTimeout(timer); 
+    return () => clearTimeout(timer);
   }, []);
 
-  return (
-    <div>
-      {showIntro ? <Intro /> : <Home />} 
-    </div>
-  );
+  return <div>{showIntro ? <Intro /> : <Home />}</div>;
 };
 
 export default LandingPage;
