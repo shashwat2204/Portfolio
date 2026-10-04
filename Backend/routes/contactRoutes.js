@@ -1,5 +1,5 @@
 import express from "express";
-import { contactForm } from "../controllers/contactController.js";
+import { contactForm } from "../controllers/contactControllers.js";
 
 const router = express.Router();
 
