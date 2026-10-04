@@ -22,7 +22,9 @@ const AboutMe = () => (
             src="/images/shashwat-portrait-illustration.png"
             alt="Illustrated portrait of Shashwat Sharma"
           />
-          <span className="portrait-signature">SHASHWAT SHARMA · SOFTWARE ENGINEER</span>
+          <span className="portrait-signature">
+            SHASHWAT SHARMA · SOFTWARE ENGINEER
+          </span>
         </div>
         <span className="about-visual-caption">A LITTLE ABOUT THE BUILDER</span>
       </div>
@@ -32,7 +34,8 @@ const AboutMe = () => (
           02 / ABOUT ME
         </motion.p>
         <motion.h2 {...revealText(0.04)}>
-          Building intelligent,<br />
+          Building intelligent,
+          <br />
           <em>reliable software.</em>
         </motion.h2>
         <motion.p className="about-lead" {...revealText(0.07)}>
@@ -63,12 +66,29 @@ const AboutMe = () => (
           Explore my resumes <span>↓</span>
         </motion.a>
         <motion.div className="about-tags" {...revealText(0.08)}>
-          <span> ASP.NET / C# <b>|</b> </span>
-          <span>FULL STACK <b>|</b> </span>
-          <span> REACT / NODE.JS <b>|</b> </span>
-          <span> PYTHON <b>|</b> </span>
-          <span> GENERATIVE AI <b>|</b> </span>
-          <span> RAG SYSTEMS <b>|</b> </span>
+          <span>
+            {" "}
+            ASP.NET / C# <b>|</b>{" "}
+          </span>
+          <span>
+            FULL STACK <b>|</b>{" "}
+          </span>
+          <span>
+            {" "}
+            REACT / NODE.JS <b>|</b>{" "}
+          </span>
+          <span>
+            {" "}
+            PYTHON <b>|</b>{" "}
+          </span>
+          <span>
+            {" "}
+            GENERATIVE AI <b>|</b>{" "}
+          </span>
+          <span>
+            {" "}
+            RAG SYSTEMS <b>|</b>{" "}
+          </span>
         </motion.div>
       </div>
     </div>

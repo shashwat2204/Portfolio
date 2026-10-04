@@ -8,16 +8,36 @@ dotenv.config();
 
 const app = express();
 
-// Middleware
-app.use(cors());
+const allowedOrigins = new Set(
+  (process.env.FRONTEND_ORIGINS || "http://localhost:5173")
+    .split(",")
+    .map((origin) => origin.trim())
+    .filter(Boolean),
+);
+
+app.use(
+  cors({
+    origin(origin, callback) {
+      if (!origin || allowedOrigins.has(origin)) {
+        callback(null, true);
+        return;
+      }
+      callback(
+        new Error("This origin is not allowed to access the contact API."),
+      );
+    },
+  }),
+);
 app.use(express.json());
 
-// Routes
-app.use('/api/contact', contactRoutes);
+app.get("/api/health", (_req, res) => {
+  res.status(200).json({ status: "ok" });
+});
 
-// Connect DB
-connectDB();
+app.use("/api/contact", contactRoutes);
 
-// Server
 const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+
+connectDB().then(() => {
+  app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+});

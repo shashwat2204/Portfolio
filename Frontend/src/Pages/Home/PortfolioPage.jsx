@@ -293,17 +293,23 @@ function PortfolioPage() {
     event.preventDefault();
     const form = event.currentTarget;
     const values = Object.fromEntries(new FormData(form));
+    const backendUrl = import.meta.env.VITE_BACKEND_URL?.replace(/\/+$/, "");
+
+    if (!backendUrl) {
+      setContactStatus(
+        "The message form is not connected yet. You can email me directly using the link below.",
+      );
+      return;
+    }
+
     setSending(true);
     setContactStatus("");
     try {
-      const response = await fetch(
-        `${import.meta.env.VITE_BACKEND_URL || "http://localhost:5000"}/api/contact`,
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(values),
-        },
-      );
+      const response = await fetch(`${backendUrl}/api/contact`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(values),
+      });
       if (!response.ok) throw new Error("Message could not be sent");
       form.reset();
       setContactStatus("Thanks — your message is on its way.");
@@ -513,6 +519,12 @@ function PortfolioPage() {
                 {sending ? "Sending…" : "Send a message"}
                 <span>↗</span>
               </button>
+              <a
+                className="contact-email-fallback"
+                href="mailto:shashwatsharma.220104@gmail.com"
+              >
+                Or email me directly <span>↗</span>
+              </a>
               {contactStatus && (
                 <p className="contact-status" role="status">
                   {contactStatus}

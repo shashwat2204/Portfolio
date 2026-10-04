@@ -35,9 +35,14 @@ const Skills = () => (
     >
       <div>
         <p className="section-label">03 / MY TOOLKIT</p>
-        <h2>Tools for the <em>job.</em></h2>
+        <h2>
+          Tools for the <em>job.</em>
+        </h2>
       </div>
-      <p>A growing set of tools I use to take ideas from concept to working software.</p>
+      <p>
+        A growing set of tools I use to take ideas from concept to working
+        software.
+      </p>
     </motion.div>
     <motion.div
       className="portfolio-skill-grid"
